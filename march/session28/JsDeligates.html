@@ -1,0 +1,23 @@
+<script>
+
+    var fptr = function f1(){
+        console.log("inside f1");
+    }
+    var  f1ptr =fptr;
+    fptr();
+    fptr = function f2(){
+        console.log("inside f2");
+    }
+    fptr();
+    function doSomething(callback_ptr){
+        console.log("doing something");
+        console.log("completing work");
+        callback_ptr();
+    }
+    doSomething(function(){
+        console.log("inside anonnymous function");
+    });
+    setTimeout(function(){
+        console.log("inside anonymous function 2 after 3 second");
+    });
+</script>

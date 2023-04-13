@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethodCoreLib", "FactoryMethodCoreLib\FactoryMethodCoreLib.csproj", "{49167839-1D0B-4CFD-86D8-FABBAEE95018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethodClientApp", "FactoryMethodClientApp\FactoryMethodClientApp.csproj", "{A350D082-FD53-41AA-BD2D-52B85890B0BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49167839-1D0B-4CFD-86D8-FABBAEE95018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49167839-1D0B-4CFD-86D8-FABBAEE95018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49167839-1D0B-4CFD-86D8-FABBAEE95018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49167839-1D0B-4CFD-86D8-FABBAEE95018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A350D082-FD53-41AA-BD2D-52B85890B0BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A350D082-FD53-41AA-BD2D-52B85890B0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A350D082-FD53-41AA-BD2D-52B85890B0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A350D082-FD53-41AA-BD2D-52B85890B0BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01F59DA8-0D43-44F1-94E2-46BA48A1BCBB}
+	EndGlobalSection
+EndGlobal
