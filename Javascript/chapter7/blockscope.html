@@ -1,0 +1,14 @@
+<script>
+    function checkWeight(weight){
+      if(weight>5000){
+        //local scope accessible inside function only
+        var text= "no free shipping";
+        alert(text);
+      }
+       alert(text);
+     
+    }
+    checkWeight(59000);
+    //try to access it outside the function whic is not possible
+    alert(text);
+</script>

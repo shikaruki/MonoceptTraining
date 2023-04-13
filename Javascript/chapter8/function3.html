@@ -1,0 +1,13 @@
+<script>
+    debugger;
+    function stopWatch(){
+        var startTime=Date.now();
+        function getDealy(){
+            var elapsedTime=Date.now-startTime;
+            alert(elapsedTime);
+        }
+        return getDealy;
+    }
+   var timer= stopWatch();
+   alert(timer);
+</script>
