@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="getDataHandler()">GetData</button>
+    <img id="firstFlag">
+    <!-- <div id="firstFlag"></div> -->
+    <script>
+        function getDataAsync() //Promise<country[]>
+        {
+
+            return new Promise(function (resolve, reject)
+            {
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("load", function ()
+                {
+                    var resp = JSON.parse(this.responseText);
+
+                    resolve(resp)
+                });
+
+                xhr.open("GET", "https://restcountries.com/v3.1/all?fields=name,flags")
+                xhr.send();
+            })
+        }
+
+
+        async function getDataHandler()
+        {
+            var countries = await getDataAsync();
+            // // for (let i = 0; i < countries.length; i++)
+            // // {
+            // //     console.log(countries[i].flags.png)
+            // //     document.getElementById("firstFlag").src = countries[i].flags.png
+            // // }
+            // var image = "";
+            // //console.log(countries)
+
+
+
+
+
+            // for (let i = 0; i < countries.length; i++)
+            // {
+            //     image += `<h1>${countries[i].name.common}</h1>`;
+            //     image += `  <img src="${countries[i].flags.png}" alt="" style="display: block">`;
+
+            // }
+            // document.querySelector("#firstFlag").innerHTML = image
+            console.log(countries)
+            var mappedCountries = countries.map(c =>
+            {
+                var obj = {};
+                obj.flag = c.flags.png
+                obj.name = c.name.common
+                return obj;
+            })
+            var india = mappedCountries.find(c => c.name.toUpperCase() == "INDIA");
+            console.log("india ", india)
+            document.getElementById("firstFlag").src = india.flag;
+
+        }
+    </script>
+</body>
+
+</html>

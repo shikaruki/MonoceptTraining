@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="firstFlag"></div>
+    <!-- <img src="firstFlag"> -->
+    <button onclick="loadCountyData()">GetData</button>
+    <script>
+        function display()
+        {
+            // console.log("this is", this)
+            console.log(typeof this.responseText)
+            var jsonRespo = JSON.parse(this.responseText)
+            console.log(jsonRespo[0].flags.png)
+            var image = `  <img src="${jsonRespo[0].flags.png}" alt="" style="display: block">`
+            document.querySelector("#firstFlag").innerHTML = image
+            // document.getElementById("firstFlag").src = jsonRespo[0].flags.png
+            // console.log(this.responseText)
+        }
+        function loadCountyData()
+        {
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", display)
+            xhr.open("GET", "https://restcountries.com/v3.1/all?fields=name,flags")
+            xhr.send();
+
+            console.log("end of click")
+        }
+    </script>
+</body>
+
+</html>

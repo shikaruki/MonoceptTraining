@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br><br>
+
+        <label for="branch">Branch:</label>
+        <select id="branch" name="branch">
+            <option value="cse">Computer Science Engineering</option>
+            <option value="it">Information Technology</option>
+            <option value="mech">Mechanical</option>
+        </select><br><br>
+
+        <label for="cgpa">CGPA:</label>
+        <input type="text" id="cgpa" name="cgpa"><br><br>
+
+        <input type="button" value="Add" onclick="saveDetails()">
+        <input type="button" value="View" onclick="viewDetails()" href="details.html">
+    </form>
+
+    <script>
+        function saveDetails()
+        {
+            let name = document.getElementById("name").value;
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let branch = document.getElementById("branch").value;
+            let cgpa = document.getElementById("cgpa").value;
+
+            if (name === "" || gender === null || branch === "" || cgpa === "")
+            {
+                alert("Please fill all the fields");
+                return;
+            }
+
+            let details = { "name": name, "gender": gender.value, "branch": branch, "cgpa": cgpa };
+            let savedDetails = JSON.parse(localStorage.getItem("studentDetails"));
+
+            if (savedDetails === null)
+            {
+                savedDetails = [];
+            }
+
+            savedDetails.push(details);
+            localStorage.setItem("studentDetails", JSON.stringify(savedDetails));
+            alert("Details added to Local Storage");
+        }
+
+        function viewDetails()
+        {
+            let details = JSON.parse(localStorage.getItem("studentDetails"));
+
+            if (details === null || details.length === 0)
+            {
+                alert("No details found in Local Storage");
+                return;
+            }
+
+            let windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes,width=500,height=500";
+            let displayWindow = window.open("", "Student Details", windowFeatures);
+            displayWindow.document.write("<h1>Student Details</h1>");
+
+            for (let i = 0; i < details.length; i++)
+            {
+                displayWindow.document.write("<p><strong>Name: </strong>" + details[i].name + "</p>");
+                displayWindow.document.write("<p><strong>Gender: </strong>" + details[i].gender + "</p>");
+                displayWindow.document.write("<p><strong>Branch: </strong>" + details[i].branch + "</p>");
+                displayWindow.document.write("<p><strong>CGPA: </strong>" + details[i].cgpa + "</p>");
+                displayWindow.document.write('<button onclick="deleteDetails(' + i + ')">Delete</button>');
+                displayWindow.document.write("<hr>");
+            }
+        }
+        function deleteDetails(index)
+        {
+            let details = JSON.parse(localStorage.getItem("studentDetails"));
+
+            if (details === null || details.length === 0)
+            {
+                alert("No details found in Local Storage");
+                return;
+            }
+            localStorage.removeItem("mytime");
+            details.splice(index, 1);
+            localStorage.setItem("studentDetails", JSON.stringify(details));
+            alert("Details deleted from Local Storage");
+            location.reload();
+        }
+
+    </script>
+
+</body>
+
+</html>

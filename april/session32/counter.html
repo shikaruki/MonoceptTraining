@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btnMinus {
+            visibility: visible;
+        }
+
+        #btnMinus[disabled] {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Counter App</h1>
+    <button id="btnPlus">+</button>
+    <button id="btnMinus">-</button>
+
+    <h1 id="h1Display"></h1>
+
+
+    <script>
+        (function ()
+        {
+
+            var btnPlus = document.querySelector("#btnPlus");
+            var btnMinus = document.querySelector("#btnMinus");
+            // console.log(btnPlus);
+            // console.log(btnMinus);
+            console.log(h1Display)
+            var counter = 10;
+            updateDisplay();
+            btnPlus.addEventListener("click", function ()
+            {
+                //console.log("+")
+                counter += 1;
+                updateDisplay();
+            });
+            btnMinus.addEventListener("click", function ()
+            {
+                //console.log("-")
+
+                if (counter > 0)
+                {
+                    counter -= 1;
+                }
+                updateDisplay();
+            });
+
+            function updateDisplay()
+            {
+                h1Display.innerHTML = counter;
+                if (counter == 0)
+                {
+                    btnMinus.disabled = true;
+                }
+                else
+                    btnMinus.disabled = false;
+            }
+        })();
+    </script>
+</body>
+
+</html>

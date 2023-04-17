@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var DataService = function ()
+        {
+            var serviceObj = {};
+            console.log("module is Only loaded once")
+
+            function fnComm()
+            {
+
+            }
+            serviceObj.doTask1 = function ()
+            {
+                console.log("Doing task1");
+            }
+            serviceObj.doTask2 = function ()
+            {
+
+                console.log("Doing task2");
+            }
+            serviceObj.getData = function ()
+            {
+                return Math.random() * 10;
+            }
+            return serviceObj;
+        }();
+
+        console.log(typeof DataService)
+        DataService.doTask1();
+        DataService.doTask2();
+        console.log(DataService.getData());
+    </script>
+</body>
+
+</html>

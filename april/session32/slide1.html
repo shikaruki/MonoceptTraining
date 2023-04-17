@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Slider</h1>
+    <input type="range" min="=1" max="50" value="5" id="slider">
+    <h1 id="h1Display"></h1>
+    <div id="btnContainer"></div>
+    <script>
+        var slider = document.querySelector("#slider");
+        var h1Display = document.querySelector("#h1Display")
+        h1Display.innerHTML = slider.value;
+        // console.log(slider);
+        displayButton(slider.value);
+        slider.addEventListener("change", function ()
+        {
+            h1Display.innerHTML = slider.value;
+            displayButton(slider.value);
+        })
+        //displayButton(10);
+        function fnClickHandler(count)
+        {
+            //var btn = document.querySelector(count);
+            // var btn1 = document.getElementById("count");
+            // btn.style.background = "blue";
+
+
+            //document.getElementById("count").style.backgroundColor = "blue";
+
+            console.log(" you clicked  " + count)
+            var btn = document.querySelector(`${count}`)
+
+            btn.style.backgroundColor = 'yellow';
+        }
+        function displayButton(btnCount)
+        {
+            //console.log(btnCount);
+            var btnCountainer = document.querySelector("#btnContainer")
+            var allButtons = "";
+            for (var i = 1; i <= btnCount; i++)
+            {
+                //console.log(i);
+                // allButtons +=
+                //     style = background - color: indianred > ${ i }</button >& nbsp & nbsp;
+                allButtons += `<button id = button${i} onclick = fnClickHandler(${i}) style = background-color:indianred>${i}</button>&nbsp`
+            }
+            //console.log(allButtons);
+            btnCountainer.innerHTML = allButtons;
+        }
+    </script>
+
+
+</body>
+
+</html>

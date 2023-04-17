@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var DataService = function ()
+        {
+            var service = {};
+            service.getData = function ()
+            {
+                return new Promise(function (resolvePtr, rejectPtr)
+                {
+                    var no = Math.random() * 10;
+                    console.log("Inside Promise")
+                    if (no > 5)
+                    {
+                        resolvePtr({ status: "success", data: no })
+                    }
+                    else
+                    {
+                        rejectPtr({ status: "Error", message: "Data is low " + no })
+                    }
+                });
+            }
+            return service;
+        }();
+        var promise1 = DataService.getData()
+        var promise2 = promise1.then((resp) =>
+        {
+            console.log("promise 1 then")
+            // console.log("Response is ", resp);
+            return 10;
+        })
+
+        var promise3 = promise2.then((d) =>
+        {
+            console.log("promise 2 then", d)
+            //console.log(d);
+            return d * 10;
+        })
+
+        var promise4 = promise3.then((d) => console.log("Promise3 then", d))
+        promise4.catch((err) => console.log("promise 4 then ", err))
+
+        console.log("end of script");
+    </script>
+</body>
+
+</html>
